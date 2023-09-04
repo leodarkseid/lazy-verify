@@ -1,0 +1,32 @@
+{
+  "name": "lazy_verify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leodarkseid/lazy-verify.git"
+  },
+  "keywords": [
+    "smart-contracts",
+    "verification",
+    "etherscan",
+    "blockscout"
+  ],
+  "author": "leo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leodarkseid/lazy-verify/issues"
+  },
+  "homepage": "https://github.com/leodarkseid/lazy-verify#readme",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}
