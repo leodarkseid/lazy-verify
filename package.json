@@ -1,7 +1,7 @@
 {
   "name": "lazy_verify",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Simple Tool for Contract verification on Etherscan and Blockscout",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,10 +18,17 @@
     "smart-contracts",
     "verification",
     "etherscan",
-    "blockscout"
+    "blockscout",
+    "hardhat",
+    "truffle",
+    "remix"
   ],
-  "author": "leo",
-  "license": "ISC",
+  "author": {
+    "email": "leodarkseid@gmail.com",
+    "name": "Leo",
+    "url": "https://badmuskolade.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/leodarkseid/lazy-verify/issues"
   },
