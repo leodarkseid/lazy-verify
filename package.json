@@ -1,5 +1,5 @@
 {
-  "name": "lazy_verify",
+  "name": "lazy-verify",
   "version": "0.0.1",
   "description": "Simple Tool for Contract verification on Etherscan and Blockscout",
   "main": "dist/index.js",
