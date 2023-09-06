@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyContract = void 0;
 const axios_1 = require("axios");
 const checkVerification_1 = require("./checkVerification");
+const utils_1 = require("../utils");
 function verifyContract(lazyVerify) {
     return __awaiter(this, void 0, void 0, function* () {
         const response = yield axios_1.default.post(lazyVerify.api_url, {
@@ -24,21 +25,19 @@ function verifyContract(lazyVerify) {
             compilerversion: lazyVerify.compilerVersion,
             optimizationUsed: lazyVerify.optimizationUsed,
             runs: lazyVerify.runs,
-            constructorArguements: lazyVerify.constructorArguments,
+            constructorArguements: (0, utils_1.abiEncoder)(lazyVerify.constructorArguments),
         }, {
             headers: {
                 "content-type": "application/x-www-form-urlencoded",
             },
         });
         if (response.data.status === "1") {
-            console.log(`Contract verified successfully. GUID: ${response.data.result}`);
+            console.log(`Contract submitted successfully. GUID: ${response.data.result}`);
             console.log("confirming verification ...");
             yield (0, checkVerification_1.checkVerification)(lazyVerify.api_url, lazyVerify.api_key, response.data.result);
-            console.log("Status", response.data.status);
-            console.log("Verification confirmed !!!");
         }
         else {
-            console.error(`Error verifying contract: ${response.data.result}`);
+            console.log(`Error verifying contract: ${response.data.result}`);
         }
     });
 }

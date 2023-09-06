@@ -9,5 +9,5 @@ export interface ILazy_verify {
     compilerVersion: string;
     optimizationUsed: number;
     runs: number;
-    constructorArguments: string;
+    constructorArguments: any;
 }

@@ -24,14 +24,15 @@ function checkVerification(api_url, api_key, guid_) {
             },
         });
         if (response.data.status === "1") {
-            console.log("success");
-            console.log("status", response.data.status);
-            console.log("message", response.data.message);
-            console.log("result", response.data.result);
+            console.log(`status: ${response.data.result}`);
             return true;
         }
+        else if (response.data.status === "0") {
+            console.log(`status: ${response.data.result}`);
+            return false;
+        }
         else {
-            console.error(`Error confirming verification: ${response.data.result}`);
+            console.log(`status: ${response.data.result}`);
             return false;
         }
     });
