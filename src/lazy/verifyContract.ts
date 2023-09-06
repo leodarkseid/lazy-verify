@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ILazy_verify } from "./index";
 import { checkVerification } from "./checkVerification";
+import { abiEncoder } from "../utils";
 
 export async function verifyContract(lazyVerify: ILazy_verify) {
   const response = await axios.post(
@@ -15,7 +16,7 @@ export async function verifyContract(lazyVerify: ILazy_verify) {
       compilerversion: lazyVerify.compilerVersion,
       optimizationUsed: lazyVerify.optimizationUsed,
       runs: lazyVerify.runs,
-      constructorArguements: lazyVerify.constructorArguments,
+      constructorArguements: abiEncoder(lazyVerify.constructorArguments),
     },
     {
       headers: {
@@ -26,7 +27,7 @@ export async function verifyContract(lazyVerify: ILazy_verify) {
 
   if (response.data.status === "1") {
     console.log(
-      `Contract verified successfully. GUID: ${response.data.result}`
+      `Contract submitted successfully. GUID: ${response.data.result}`
     );
     console.log("confirming verification ...");
     await checkVerification(
@@ -34,9 +35,7 @@ export async function verifyContract(lazyVerify: ILazy_verify) {
       lazyVerify.api_key,
       response.data.result
     );
-    console.log("Status", response.data.status);
-    console.log("Verification confirmed !!!");
   } else {
-    console.error(`Error verifying contract: ${response.data.result}`);
+    console.log(`Error verifying contract: ${response.data.result}`);
   }
 }
